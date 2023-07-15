@@ -4,7 +4,7 @@ import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import { CgWebsite } from "react-icons/cg";
 import {BsGithub} from "react-icons/bs";
-export const ProjectCard = ({ title, description, imgUrl,demo,project }) => {
+export const ProjectCard = ({ title, description, imgUrl,finished,demo,projectlink ,upcoming}) => {
   return (
     <Col size={12} sm={6} md={4}>
 
@@ -16,24 +16,26 @@ export const ProjectCard = ({ title, description, imgUrl,demo,project }) => {
           <h4>{title}</h4>
           <span>{description}</span>
           <br></br>
-          <button>
-          <Button className="button"
-             variant="primary"
-            href={demo}
-             target="_blank"
-            style={{ marginLeft: "10px" }}
-          >
-            <CgWebsite /> &nbsp;
-            {"Demo"}
+          {finished && (
+            <button>
+            <Button className="button"
+               variant="primary"
+              href={demo}
+               target="_blank"
+              style={{ marginLeft: "10px" }}
+            >
+              <CgWebsite /> &nbsp;
+              {"Demo"}
+            </Button>
+         <Button
+         variant="primary" href={projectlink} target="_blank" style={{ marginLeft: "10px" }}>
+            <BsGithub /> 
+            {"GitHub"}
           </Button>
-       <Button
-       variant="primary" href={project} target="_blank" style={{ marginLeft: "10px" }}>
-          <BsGithub /> 
-          {/* {props.isBlog ? "Blog" : "GitHub"} */} {"GitHub"}
-        </Button>
-       </button>
+         </button>
+          )}                         
        </div>
-      </div>
+      </div>  
     </Col>
   )
 }

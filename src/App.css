@@ -25,6 +25,8 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 75px;
+  height: 100%;
+  overflow: hidden;
 }
 
 body {
@@ -34,6 +36,7 @@ body {
   background-color: #121212 !important;
   color: #fff !important;
   font-family: 'Centra', sans-serif !important;
+  height: 100%;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -82,6 +85,10 @@ p.danger {
 	color: red;
 }
 /************ Navbar Css ************/
+.navbar img {
+  width: 100px;
+  height: auto;
+}
 nav.navbar {
   padding: 18px 0;
   position: fixed;
@@ -89,10 +96,12 @@ nav.navbar {
   top: 0;
   z-index: 9999;
   transition:  0.32s ease-in-out;
+  background-color: #121212
 }
 nav.navbar.scrolled {
   padding: 0px 0;
   background-color: #121212;
+  display: block;
 }
 nav.navbar a.navbar-brand {
     width: 9%;
@@ -115,11 +124,11 @@ span.navbar-text {
 }
 .social-icon {
     display: inline-block;
-    margin-left: 14px;
+    margin-left: 1px;
 }
 .social-icon a {
-    width: 42px;
-    height: 42px;
+    width: 35px;
+    height: 35px;
     background: rgba(217, 217, 217, 0.1);
     display: inline-flex;
     border-radius: 50%;
@@ -143,7 +152,7 @@ span.navbar-text {
     transform: scale(1);
 }
 .social-icon a img {
-	width: 60%;
+	width: 50%;
 	z-index: 1;
 	transition: 0.3s ease-in-out;
 }
@@ -154,9 +163,9 @@ span.navbar-text {
   font-weight: 700;
   color: #fff;
   border: 1px solid #fff;
-  padding: 18px 34px;
+  padding: 18px 25px;
   font-size: 18px;
-  margin-left: 18px;
+  margin-left: 15px;
 	position: relative;
 	background-color: transparent;
 	transition: 0.3s ease-in-out;
@@ -204,7 +213,7 @@ nav.navbar .navbar-toggler-icon:focus {
 nav.navbar .navbar-toggler-icon:after,
 nav.navbar .navbar-toggler-icon:before {
 	width: 24px;
-	position: absolute;
+	position: relative;
 	height: 2px;
 	background-color: #fff;
 	top: 0;
@@ -302,7 +311,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 
 /************ Skills Css ************/
 .skill {
-  padding: 0 0 50px 0;
+  padding: 120px 0 50px 0;
   position: relative;
 }
 .skill-bx {
@@ -342,7 +351,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 
 /************ Projects Css ************/
 .project {
-  padding: 80px 0;
+  padding: 120px 0;
   position: relative;
   background-color: black;
 }
@@ -469,16 +478,34 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 
 /************ Projects Css ************/
 .contact {
-  background: linear-gradient(90.21deg, #AA367C -5.91%, #4A2FBD 111.58%);
-  padding: 60px 0 200px 0;
+  /* background: linear-gradient(90.21deg, #AA367C -5.91%, #4A2FBD 111.58%); */
+  /* background-image: linear-gradient(
+  30deg,
+  hsl(250deg 39% 23%) 0%,
+  hsl(239deg 42% 31%) 21%,
+  hsl(231deg 54% 37%) 30%,
+  hsl(233deg 51% 32%) 39%,
+  hsl(242deg 43% 23%) 46%,
+  hsl(246deg 42% 17%) 54%,
+  hsl(242deg 40% 14%) 61%,
+  hsl(234deg 43% 13%) 69%,
+  hsl(226deg 50% 21%) 79%,
+  hsl(221deg 55% 28%) 100%
+);   */
+background-image: url("../src/assets/img/banner-bg.jpg");
+  padding: 125px 0 200px 0;
+  line-height: 0%;
 }
 .contact img {
   width: 92%;
+  margin-top: -20px;
 }
 .contact h2 {
+
 	font-size: 45px;
 	font-weight: 700;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
+  margin-top: 0px;
 }
 .contact form input, .contact form textarea {
   width: 100%;
@@ -542,12 +569,13 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 /************ Footer Css ************/
 .footer {
   padding: 0 0 50px 0;
-  background-image: url('./assets/img/footer-bg.png');
+  /* background-image: url('./assets/img/footer-bg.png'); */
   background-position: center center;
-  background-size: cover;
+  background-size: 50%;
   background-repeat: no-repeat;
+  height: 15%;overflow: hidden;
 }
-.newsletter-bx {
+/* .newsletter-bx {
   background: #FFFFFF;
   border-radius: 55px;
   color: #121212;
@@ -606,14 +634,40 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   font-weight: 500;
   letter-spacing: 0.5px;
   border-radius: 18px;
-}
+} */
 .footer img {
   width: 26%;
+  display: grid;
+  margin-left: auto;
+  margin-right: auto;
+  overflow: hidden;
+  height: 100%;
+  margin-bottom: 0x;
 }
 .footer p {
-  font-weight: 400;
+  font-weight: 200;
   font-size: 14px;
   color: #B8B8B8;
   letter-spacing: 0.5px;
   margin-top: 20px;
+  height: 100%;
 }
+.contact form {
+  margin-: 0;
+}
+#logos{
+  margin-bottom: 10px;
+}
+.purple {
+  color: var(#c770f0) !important;
+}
+
+body {
+  padding-top: 60px;
+}
+@media (max-width: 979px) {
+  body {
+    padding-top: 0px;
+  }
+}
+@media (min-width: 981px) { body { padding-top: 60px; } } 

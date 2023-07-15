@@ -4,7 +4,9 @@ import { Container, Row, Col } from "react-bootstrap";
 import headerImg from "../assets/img/header-img.png";
 import { ArrowRightCircle } from 'react-bootstrap-icons';
 import 'animate.css';
+import Button from "react-bootstrap/Button";
 import TrackVisibility from 'react-on-screen';
+
 
 export const Banner = () => {
   const [loopNum, setLoopNum] = useState(0);
@@ -59,7 +61,12 @@ export const Banner = () => {
                 <span className="tagline">Welcome to my Portfolio</span>
                 <h1>{`Hi!`}<br></br> {`I'm Wilson Antony`} <br></br><span className="txt-rotate" dataPeriod="1000" data-rotate='[ "Full-Stack Developer", "Web Devoloper", "UI/UX Designer" ]'><span className="wrap">{text}</span></span></h1>
                   <p>Passionate Computer Science Graduate | Pursuing Promising Career in Software Development and Technological Innovation</p>
-                  <button onClick={() => console.log('connect')}>Let’s Connect <ArrowRightCircle size={25} /></button>
+                  <button>
+                    <Button class="btn bg-transparent"
+                    href="#connect">
+                    {"About Me"} <ArrowRightCircle size={25} />
+                    </Button></button>
+                    <br></br>
               </div>}
             </TrackVisibility>
           </Col>

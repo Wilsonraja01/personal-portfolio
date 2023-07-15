@@ -1,14 +1,17 @@
+/* eslint-disable no-undef */
 import { useState, useEffect } from "react";
 import { Navbar, Nav, Container } from "react-bootstrap";
+// import {  Col } from "react-bootstrap";
 import logo from '../assets/img/logo.png';
 import navIcon1 from '../assets/img/nav-icon1.svg';
 import navIcon2 from '../assets/img/nav-icon2.svg';
 import navIcon3 from '../assets/img/nav-icon3.svg';
+import navIcon4 from '../assets/img/nav-icon4.svg';
 import { HashLink } from 'react-router-hash-link';
 import {
   BrowserRouter as Router
 } from "react-router-dom";
-
+import Button from "react-bootstrap/Button";
 export const NavBar = () => {
 
   const [activeLink, setActiveLink] = useState('home');
@@ -31,13 +34,20 @@ export const NavBar = () => {
   const onUpdateActiveLink = (value) => {
     setActiveLink(value);
   }
+  function downloadFile() {
+    window.open("https://drive.google.com/uc?export=download&id=1wotdPwuinoLjfFQLPIzKYT6_qpo5FLzd")
+ }
+ 
 
   return (
     <Router>
       <Navbar expand="md" className={scrolled ? "scrolled" : ""}>
         <Container>
           <Navbar.Brand href="/">
-            <img src={logo} alt="Logo" />
+           
+              <img src={logo} alt="Logo"/>
+            
+            
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav">
             <span className="navbar-toggler-icon"></span>
@@ -46,16 +56,18 @@ export const NavBar = () => {
             <Nav className="ms-auto">
               <Nav.Link href="#home" className={activeLink === 'home' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('home')}>Home</Nav.Link>
               <Nav.Link href="#skills" className={activeLink === 'skills' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('skills')}>Skills</Nav.Link>
-              <Nav.Link href="#projects" className={activeLink === 'projects' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('projects')}>Projects</Nav.Link>
+              <Nav.Link href="#project" className={activeLink === 'projects' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('projects')}>Projects</Nav.Link>
+              <Nav.Link href="#connect" className={activeLink === 'connect' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('about')}>About</Nav.Link>
             </Nav>
             <span className="navbar-text">
               <div className="social-icon">
-                <a href="#"><img src={navIcon1} alt="" /></a>
-                <a href="#"><img src={navIcon2} alt="" /></a>
-                <a href="#"><img src={navIcon3} alt="" /></a>
+                <a href="https://www.linkedin.com/in/wilson-antony-ra/" target="_blank"><img src={navIcon1} alt="" /></a>
+                <a href="https://github.com/Wilsonraja01" target="_blank"><img src={navIcon2} alt="" /></a>
+                <a href="https://www.instagram.com/wilsonraja.r.a_official/" target="_blank"><img src={navIcon3} alt="" /></a>
+                <a href="mailto: wilsonraja.ra@gmail.com" target="_blank"><img src={navIcon4} alt="" /></a>
               </div>
-              <HashLink to='#connect'>
-                <button className="vvd"><span>Let’s Connect</span></button>
+              <HashLink >
+                <Button  className="vvd" type="submit" onClick={downloadFile} ><span>My Resume</span></Button>
               </HashLink>
             </span>
           </Navbar.Collapse>
