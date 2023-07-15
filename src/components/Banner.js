@@ -63,7 +63,7 @@ export const Banner = () => {
                   <p>Passionate Computer Science Graduate | Pursuing Promising Career in Software Development and Technological Innovation</p>
                   <button>
                     <Button class="btn bg-transparent"
-                    href="#connect">
+                    href="#about">
                     {"About Me"} <ArrowRightCircle size={25} />
                     </Button></button>
                     <br></br>
