@@ -35,7 +35,7 @@ export const NavBar = () => {
     setActiveLink(value);
   }
   function downloadFile() {
-    window.open("https://drive.google.com/uc?export=download&id=1wotdPwuinoLjfFQLPIzKYT6_qpo5FLzd")
+    window.open("https://drive.google.com/uc?export=download&id=1bJ7US4bewBmKgPxCBJAmpcrYpnpxmyvy")
  }
  
 
