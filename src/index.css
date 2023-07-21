@@ -11,3 +11,12 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+#htmllogo
+{
+  max-height: 90px !important;
+ max-width: 90px !important;
+}
+.td-header-style-1 .td-header-sp-logo img {
+  max-height: 90px !important;
+  max-width: 90px !important;
+ }
