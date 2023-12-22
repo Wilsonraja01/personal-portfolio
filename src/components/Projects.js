@@ -1,13 +1,16 @@
 import { Container, Row, Col, Tab, Nav } from "react-bootstrap";
 import { ProjectCard } from "./ProjectCard";
+import projImg0 from "../assets/img/project-img0.png";
 import projImg1 from "../assets/img/project-img1.png";
 import projImg2 from "../assets/img/project-img2.png";
 import projImg3 from "../assets/img/project-img3.png";
+import projImg4 from "../assets/img/project-img4.png";
 import colorSharp2 from "../assets/img/color-sharp2.png";
 import 'animate.css';
 import TrackVisibility from 'react-on-screen';
 
 export const Projects = () => {
+  
   const projects = [
     {
       title: "Classifying Depression using Machine Learning on Social Media Tweets",
@@ -26,13 +29,38 @@ export const Projects = () => {
       projectlink:"https://github.com/Wilsonraja01/Wilsonraja01.github.io/tree/main/rpggame",
     },
     {
+      title: "Real-time Paraphrase AI with Database Integration",
+      description: "COMING SOON",
+      // description: "Python & GO & MySQL",
+      imgUrl: projImg4,
+      finished:false,
+      // demo:"https://wilsonraja01.github.io/rpggame/",
+      // projectlink:"https://github.com/Wilsonraja01/Wilsonraja01.github.io/tree/main/rpggame",
+    },
+    {
       title: "Micheal Construction Pvt.ltd",
       description: "COMING SOON",
       imgUrl: projImg3,
       finished:false,
       // demo:"",
       // projectlink:"https://github.com/Wilsonraja01/Wilsonraja01.github.io/tree/main/CLASSIFYING%20DEPRESSION%20USING%20MACHINE%20LEARNING%20ON%20SOCIAL%20MEDIA%20TWEETS",
+    }, 
+    {
+      // title: "Micheal Construction Pvt.ltd",
+      description: "COMING SOON",
+      imgUrl: projImg0,
+      finished:false,
+      // demo:"",
+      // projectlink:"https://github.com/Wilsonraja01/Wilsonraja01.github.io/tree/main/CLASSIFYING%20DEPRESSION%20USING%20MACHINE%20LEARNING%20ON%20SOCIAL%20MEDIA%20TWEETS",
     },
+    {
+      // title: "Micheal Construction Pvt.ltd",
+      description: "COMING SOON",
+      imgUrl: projImg0,
+      finished:false,
+      // demo:"",
+      // projectlink:"https://github.com/Wilsonraja01/Wilsonraja01.github.io/tree/main/CLASSIFYING%20DEPRESSION%20USING%20MACHINE%20LEARNING%20ON%20SOCIAL%20MEDIA%20TWEETS",
+    },    
     // {
     //   title: "Business Startup",
     //   description: "Design & Development",
@@ -88,10 +116,10 @@ export const Projects = () => {
                       </Row>
                     </Tab.Pane>
                     <Tab.Pane eventKey="section">
-                      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque quam, quod neque provident velit, rem explicabo excepturi id illo molestiae blanditiis, eligendi dicta officiis asperiores delectus quasi inventore debitis quo.</p>
+                      {/* <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque quam, quod neque provident velit, rem explicabo excepturi id illo molestiae blanditiis, eligendi dicta officiis asperiores delectus quasi inventore debitis quo.</p> */}
                     </Tab.Pane>
                     <Tab.Pane eventKey="third">
-                      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque quam, quod neque provident velit, rem explicabo excepturi id illo molestiae blanditiis, eligendi dicta officiis asperiores delectus quasi inventore debitis quo.</p>
+                      {/* <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque quam, quod neque provident velit, rem explicabo excepturi id illo molestiae blanditiis, eligendi dicta officiis asperiores delectus quasi inventore debitis quo.</p> */}
                     </Tab.Pane>
                   </Tab.Content>
                 </Tab.Container>
