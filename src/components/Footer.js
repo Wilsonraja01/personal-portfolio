@@ -1,4 +1,4 @@
-import { Container, Row, Col } from "react-bootstrap";
+import { Navbar,Container, Row, Col } from "react-bootstrap";
 import { MailchimpForm } from "./MailchimpForm";
 import logo from "../assets/img/logo.png";
 import navIcon1 from "../assets/img/nav-icon1.svg";
@@ -26,7 +26,13 @@ export const Footer = () => {
           
           <Col size={12} sm={6}>
             <div id="logos">
-            <img src={logo} alt="Logo" />
+            {/* <img src={logo} alt="Logo" /> */}
+            <Navbar.Brand href="#home">
+           
+           <img src={logo} alt="Logo"/>
+         
+         
+       </Navbar.Brand>
             </div>
           </Col>
           
