@@ -1,117 +1,115 @@
-import { useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import contactImg from "../assets/img/contact-img.png";
 import 'animate.css';
 import TrackVisibility from 'react-on-screen';
-import { ChatRight } from "react-bootstrap-icons";
 
- export const Contact = () => {
-//   const formInitialDetails = {
-//     firstName: '',
-//     lastName: '',
-//     email: '',
-//     phone: '',
-//     message: ''
-//   }
-//   const [formDetails, setFormDetails] = useState(formInitialDetails);
-//   const [buttonText, setButtonText] = useState('Send');
-//   const [status, setStatus] = useState({});
+const FUN_FACTS = [
+  { id: "golang", emoji: "⚡", text: "Golang enthusiast who loves optimizing microservices." },
+  { id: "grad", emoji: "🎓", text: "IT graduate from Dr. N.G.P. Institute of Technology." },
+  { id: "traveller", emoji: "✈️", text: "A passionate traveller who loves exploring new destinations and building clean code." },
+  { id: "scale", emoji: "🚀", text: "Passionate about designing and building high-performance scalable systems." },
+  { id: "rpg", emoji: "🎮", text: "Enjoys developing retro RPG web games in spare time." }
+];
 
-//   const onFormUpdate = (category, value) => {
-//       setFormDetails({
-//         ...formDetails,
-//         [category]: value
-//       })
-//   }
+const TECH_TAGS = [
+  { id: "go", name: "Go (Golang)", color: "#00ADD8" },
+  { id: "python", name: "Python", color: "#3776AB" },
+  { id: "react", name: "React.js", color: "#61DAFB" },
+  { id: "aws", name: "AWS Lambda", color: "#FF9900" },
+  { id: "mysql", name: "MySQL / NoSQL", color: "#4479A1" },
+  { id: "git", name: "Git & GitHub", color: "#2496ED" }
+];
 
-//   const handleSubmit = async (e) => {
-//     e.preventDefault();
-//     setButtonText("Sending...");
-//     let response = await fetch("http://localhost:5000/contact", {
-//       method: "POST",
-//       headers: {
-//         "Content-Type": "application/json;charset=utf-8",
-//       },
-//       body: JSON.stringify(formDetails),
-//     });
-//     setButtonText("Send");
-//     let result = await response.json();
-//     setFormDetails(formInitialDetails);
-//     if (result.code == 200) {
-//       setStatus({ succes: true, message: 'Message sent successfully'});
-//     } else {
-//       setStatus({ succes: false, message: 'Something went wrong, please try again later.'});
-//     }
-//   };
-
+export const Contact = () => {
   return (
     <section className="contact" id="about">
       <Container>
-        <Row className="align-items-center">
-          <Col size={12} md={6}>
+        <Row className="align-items-center g-5">
+
+          {/* Left col — photo and quote */}
+          <Col xs={12} md={5} className="text-center">
             <TrackVisibility>
-              {({ isVisible }) =>
-                <img className={isVisible ? "animate__animated animate__zoomIn" : ""}  src={contactImg} alt="About me"/>
-              }
+              {({ isVisible }) => (
+                <div className={isVisible ? "animate__animated animate__zoomIn" : ""}>
+                  <div className="about-img-wrapper">
+                    <img src={contactImg} alt="Wilson Antony portrait" className="about-photo" />
+                    <div className="about-img-ring" />
+                  </div>
+                  <br />
+                  <div className="about-quote-block">
+                    <p>"Next time you're stuck on a problem, try taking a shower and see if you come up with a solution 😅"</p>
+                    <footer>- Wilson Antony</footer>
+                  </div>
+                </div>
+              )}
             </TrackVisibility>
-            <p style={{ color: "PeachPuff",textAlign:"center",fontSize:"20px", fontWeight:"bold" }}><br></br>
-            "Next time you're stuck on a problem,<br></br>try taking a shower and see if you come up with a solution 😅"
-            <p style={{textAlign:"right", padding:"0 100px 0 0"}}><br></br>-Wilson Antony</p>
-          </p>
           </Col>
-          <Col size={10} md={6}>
+
+          {/* Right col — fun facts, tech pills, stats */}
+          <Col xs={12} md={7}>
             <TrackVisibility>
-              {({ isVisible }) =>
+              {({ isVisible }) => (
                 <div className={isVisible ? "animate__animated animate__fadeIn" : ""}>
-                <h2>About me</h2>
-                {/* <form onSubmit={handleSubmit}> */}
-                <div>
-                      <p id="about" style={{paddingLeft:"15px",
-                   fontSize:"20px", justifyContent:"flex-start", marginBottom:"-100px" }}>
-                          <li>Hi, I am <b style={{color: "PeachPuff"}}>Wilson Antony</b> from <b style={{color: "PeachPuff"}}>Tirunelveli,TamilNadu</b>.</li><br></br>
-                          <li>I am a recent graduate with a B.Tech in Information Technology from Dr.N.G.P. Institute of Technology, Coimbatore.</li><br></br> 
-                          <li>I am proficient in Python, C, C++, SQL, HTML, CSS, and JavaScript.</li><br></br> 
-                          <li>I was trained as an Associate Software Developer in Fullstack development at Calibraint Technologies, Chennai as an Intern.</li><br></br> 
-                          <li>I am a quick learner and team player, and I am available for full-time employment.</li><br></br> 
-                          <li>I am eager to start my career in Information Technology and make a positive impact.</li><br></br>
-                          <li>I am a FullStack Developer with experience in building web applications using JavaScript and React frameworks.</li>
-                      </p>
-                      </div>
-                  <Row>
-                    <Col size={1} sm={12} className="px-1">
-                      {/* <input type="text" value={formDetails.firstName} placeholder="First Name" onChange={(e) => onFormUpdate('firstName', e.target.value)} /> */}
-                                  
-                    </Col>
-                    <Col size={12} sm={12} className="px-1">
-                      {/* <input type="text" value={formDetails.lasttName} placeholder="Last Name" onChange={(e) => onFormUpdate('lastName', e.target.value)}/> */}
-                    </Col>
-                    <Col size={12} sm={6} className="px-1">
-                      {/* <input type="email" value={formDetails.email} placeholder="Email Address" onChange={(e) => onFormUpdate('email', e.target.value)} /> */}
-                    </Col>
-                    <Col size={12} sm={6} className="px-1">
-                      {/* <input type="tel" value={formDetails.phone} placeholder="Phone No." onChange={(e) => onFormUpdate('phone', e.target.value)}/> */}
-                    </Col>
-                    <Col size={12} className="px-1">
-                      {/* <textarea rows="6" value={formDetails.message} placeholder="Message" onChange={(e) => onFormUpdate('message', e.target.value)}></textarea> */}
-                      {/* <button type="submit"><span>{buttonText}</span></button> */}
-                    </Col>
-                    {/* {
-                      status.message &&
-                      <Col>
-                        <p className={status.success === false ? "danger" : "success"}>{status.message}</p>
-                      </Col>
-                    } */}
-                  </Row>
-                {/* </form> */}
-              </div>}
+                  <h2 className="about-section-label">About Me</h2>
+                  <div className="about-title-row">
+                    <h2 className="about-fun-heading">
+                      Hi! I'm <span className="about-name-highlight">Wilson Antony</span>
+                    </h2>
+                    <span className="about-wave" role="img" aria-label="waving hand">👋</span>
+                  </div>
+                  <p className="about-tagline">
+                    Software Development Engineer — Golang Developer
+                  </p>
+
+                  <div className="about-fun-facts">
+                    <ul className="fun-facts-list">
+                      {FUN_FACTS.map((fact) => (
+                        <li className="fun-fact-item" key={fact.id}>
+                          <span className="fun-fact-emoji" role="img" aria-hidden="true">{fact.emoji}</span>
+                          <span className="fun-fact-text">{fact.text}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div className="about-tech-row">
+                    <div className="about-tech-pills">
+                      {TECH_TAGS.map((tag) => (
+                        <span
+                          key={tag.id}
+                          className="about-tech-pill"
+                          style={{ borderColor: tag.color, color: tag.color }}
+                        >
+                          {tag.name}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="about-stats-row">
+                    <div className="about-stat">
+                      <span className="about-stat-num">2+</span>
+                      <span className="about-stat-label">Years Exp</span>
+                    </div>
+                    <div className="about-stat-divider" />
+                    <div className="about-stat">
+                      <span className="about-stat-num">Stateless</span>
+                      <span className="about-stat-label">Thinker</span>
+                    </div>
+                    <div className="about-stat-divider" />
+                    <div className="about-stat">
+                      <span className="about-stat-num">O(1)</span>
+                      <span className="about-stat-label">Problem Solver</span>
+                    </div>
+                  </div>
+
+                </div>
+              )}
             </TrackVisibility>
           </Col>
+
         </Row>
       </Container>
-     </section>
-  )
-// return(
-
-// )
-}
-
+    </section>
+  );
+};

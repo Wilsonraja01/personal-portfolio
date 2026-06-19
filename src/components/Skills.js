@@ -1,99 +1,89 @@
-import meter1 from "../assets/img/skills/c.png";
-import meter2 from "../assets/img/skills/c++.png";
-import meter3 from "../assets/img/skills/python.png";
-import meter4 from "../assets/img/skills/html.png";
-import meter5 from "../assets/img/skills/css.png";
-import meter6 from "../assets/img/skills/javaScript.png";
-import meter7 from "../assets/img/skills/git.png";
-import meter8 from "../assets/img/skills/mySql.png";
-import meter9 from "../assets/img/skills/react.png";
-import meter10 from "../assets/img/skills/webDevolopment.png";
-import Carousel from 'react-multi-carousel';
-import 'react-multi-carousel/lib/styles.css';
-// import arrow1 from "../assets/img/arrow1.svg";
-// import arrow2 from "../assets/img/arrow2.svg";
-import colorSharp from "../assets/img/color-sharp.png"
+import { useEffect, useRef } from "react";
+import { FaPython, FaReact, FaAws, FaGitAlt } from "react-icons/fa";
+import { SiGo, SiGraphql, SiMysql, SiAmazondynamodb, SiMongodb } from "react-icons/si";
+import { TbApi } from "react-icons/tb";
+import colorSharp from "../assets/img/color-sharp.png";
+// FIX C9 / M7: removed unused useRef — scrollRef was declared but never actually used
+
+const SKILLS = [
+  { id: "go",       name: "Go (Golang)",     icon: <SiGo             size={52} color="#00ADD8" />, desc: "Backend Systems"  },
+  { id: "python",   name: "Python",          icon: <FaPython         size={52} color="#3776AB" />, desc: "ML & Scripting"   },
+  { id: "react",    name: "React JS",        icon: <FaReact          size={52} color="#61DAFB" />, desc: "Frontend"         },
+  { id: "api",      name: "RESTful APIs",    icon: <TbApi            size={52} color="#F89820" />, desc: "API Design"       },
+  { id: "graphql",  name: "GraphQL",         icon: <SiGraphql        size={52} color="#E10098" />, desc: "Query Language"   },
+  { id: "aws",      name: "AWS Lambda",      icon: <FaAws            size={52} color="#FF9900" />, desc: "Serverless"       },
+  { id: "dynamo",   name: "Amazon DynamoDB", icon: <SiAmazondynamodb size={52} color="#4053F2" />, desc: "NoSQL DB"         },
+  { id: "mysql",    name: "MySQL",           icon: <SiMysql          size={52} color="#4479A1" />, desc: "Relational DB"    },
+  { id: "mongo",    name: "MongoDB",         icon: <SiMongodb        size={52} color="#47A248" />, desc: "Document DB"      },
+  { id: "git",      name: "Git & GitHub",    icon: <FaGitAlt         size={52} color="#F05032" />, desc: "Version Control"  },
+];
 
 export const Skills = () => {
-  const responsive = {
-    superLargeDesktop: {
-      // the naming can be any, depends on you.
-      breakpoint: { max: 4000, min: 3000 },
-      items: 5
-    },
-    desktop: {
-      breakpoint: { max: 3000, min: 1024 },
-      items: 3
-    },
-    tablet: {
-      breakpoint: { max: 1024, min: 464 },
-      items: 2
-    },
-    mobile: {
-      breakpoint: { max: 464, min: 0 },
-      items: 1
-    }
-  };
+  const trackRef = useRef(null);
+
+  useEffect(() => {
+    const track = trackRef.current;
+    if (!track) return;
+
+    const updateScroll = () => {
+      const totalWidth = track.scrollWidth;
+      const singleWidth = totalWidth / 3;
+      if (track.scrollLeft === 0) {
+        track.scrollLeft = singleWidth;
+      }
+    };
+
+    updateScroll();
+
+    const handleScroll = () => {
+      const totalWidth = track.scrollWidth;
+      const singleWidth = totalWidth / 3;
+      const currentScroll = track.scrollLeft;
+
+      if (currentScroll <= 5) {
+        track.scrollLeft = singleWidth + currentScroll;
+      } else if (currentScroll >= singleWidth * 2 - 5) {
+        track.scrollLeft = currentScroll - singleWidth;
+      }
+    };
+
+    track.addEventListener("scroll", handleScroll);
+    window.addEventListener("resize", updateScroll);
+    return () => {
+      track.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", updateScroll);
+    };
+  }, []);
 
   return (
     <section className="skill" id="skills">
-        <div className="container">
-            <div className="row">
-                <div className="col-12">
-                    <div className="skill-bx wow zoomIn">
-                        <h2>Skills</h2>
-                        <p>These are the technical skills that I have acquired through education, training, or experience.</p>
-                        <Carousel responsive={responsive} infinite={true} className="owl-carousel owl-theme skill-slider">
-                            <div className="item">
-                                <img src={meter1} alt="Image" />
-                                <h5>C Programming</h5>
-                            </div>
-                            <div className="item">
-                                <img src={meter2} alt="Image" />
-                                <h5>C++ Programming</h5>
-                            </div>
-                            <div className="item">
-                                <img src={meter3} alt="Image" />
-                                <h5>Python Programming</h5>
-                            </div>
-                            <div className="item">
-                                <img src={meter4} alt="Image" />
-                                <h5>HTML</h5>
-                            </div>
-                            <div className="item">
-                                <img src={meter5} alt="Image" />
-                                <h5>CSS</h5>
-                            </div>
-                            <div className="item">
-                                <img src={meter6} alt="Image" />
-                                <h5>JavaScript</h5>
-                            </div>
-                            <div className="item">
-                                <img src={meter7} alt="Image" />
-                                <h5>Git</h5>
-                            </div>
-                            <div className="item">
-                                <img src={meter8} alt="Image" />
-                                <h5>MySql</h5>
-                            </div>
-                            <div className="item">
-                                <img src={meter9} alt="Image" />
-                                <h5>React</h5>
-                            </div>
-                            <div className="item">
-                                <img src={meter10} alt="Image" />
-                                <h5>Web Design <br></br>and<br></br>Devolopment</h5>
-                            </div>
-                            {/* <div className="item">
-                                <img src={meter1} alt="Image" />
-                                <h5>C Programming</h5>
-                            </div> */}
-                        </Carousel>
+      <div className="container">
+        <div className="row">
+          <div className="col-12">
+            <div className="skill-bx">
+              <h2>Technical Skills</h2>
+              <p>A curated stack of backend engineering, database management, and cloud integration tools.</p>
+
+              {/* Native swipe strip — touch-friendly, loopable infinite track */}
+              <div className="skills-swipe-wrap">
+                <div ref={trackRef} className="skills-swipe-track">
+                  {/* Duplicated list items mapped with copy index for unique keys and loop logic */}
+                  {[...SKILLS, ...SKILLS, ...SKILLS].map((skill, index) => (
+                    <div className="skill-chip" key={`${skill.id}-copy-${index}`}>
+                      <div className="skill-chip-icon">{skill.icon}</div>
+                      <span className="skill-chip-name">{skill.name}</span>
+                      <span className="skill-chip-desc">{skill.desc}</span>
                     </div>
+                  ))}
                 </div>
+                <div className="skills-fade-left"  aria-hidden="true" />
+                <div className="skills-fade-right" aria-hidden="true" />
+              </div>
             </div>
+          </div>
         </div>
-        <img className="background-image-left" src={colorSharp} alt="Image" />
+      </div>
+      <img className="background-image-left" src={colorSharp} alt="" aria-hidden="true" />
     </section>
-  )
-}
+  );
+};

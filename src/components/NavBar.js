@@ -1,78 +1,135 @@
 /* eslint-disable no-undef */
 import { useState, useEffect } from "react";
 import { Navbar, Nav, Container } from "react-bootstrap";
-// import {  Col } from "react-bootstrap";
 import logo from '../assets/img/logo.png';
 import navIcon1 from '../assets/img/nav-icon1.svg';
 import navIcon2 from '../assets/img/nav-icon2.svg';
 import navIcon3 from '../assets/img/nav-icon3.svg';
 import navIcon4 from '../assets/img/nav-icon4.svg';
-import { HashLink } from 'react-router-hash-link';
-import {
-  BrowserRouter as Router
-} from "react-router-dom";
-import Button from "react-bootstrap/Button";
-export const NavBar = () => {
 
+const NAV_LINKS = [
+  { id: 'home', label: 'Home', href: '#home' },
+  { id: 'skills', label: 'Skills', href: '#skills' },
+  { id: 'experience', label: 'Experience', href: '#experience' },
+  { id: 'projects', label: 'Projects', href: '#projects' },
+  { id: 'about', label: 'About', href: '#about' },
+];
+
+export const NavBar = () => {
   const [activeLink, setActiveLink] = useState('home');
   const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => {
-      if (window.scrollY > 50) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
+    const handleScrollSpy = () => {
+      setScrolled(window.scrollY > 50);
+
+      // Check if at the bottom of the page
+      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 50) {
+        setActiveLink('about');
+        return;
       }
-    }
 
-    window.addEventListener("scroll", onScroll);
+      const sections = ['home', 'skills', 'experience', 'projects', 'about'];
+      const threshold = 120; // navbar height (75px) + small buffer
 
-    return () => window.removeEventListener("scroll", onScroll);
-  }, [])
+      for (const sectionId of sections) {
+        const el = document.getElementById(sectionId);
+        if (el) {
+          const rect = el.getBoundingClientRect();
+          if (rect.top <= threshold && rect.bottom > threshold) {
+            setActiveLink(sectionId);
+            break;
+          }
+        }
+      }
+    };
 
-  const onUpdateActiveLink = (value) => {
+    window.addEventListener("scroll", handleScrollSpy);
+    handleScrollSpy();
+
+    return () => {
+      window.removeEventListener("scroll", handleScrollSpy);
+    };
+  }, []);
+
+  const onUpdateActiveLink = (e, value) => {
+    e.preventDefault();
     setActiveLink(value);
-  }
-  function downloadFile() {
-    window.open("https://drive.google.com/uc?export=download&id=1_qAYIAJfvt4MM29zTv1ESdivvwJVqK5c")
- }
- 
+    setMenuOpen(false);
+    const target = document.getElementById(value);
+    if (target) {
+      target.scrollIntoView({ behavior: "smooth" });
+      window.history.pushState(null, null, `#${value}`);
+    }
+  };
 
+  const downloadFile = () => {
+    window.open(
+      "https://drive.google.com/uc?export=download&id=1grCMqjVrpEE3k2ny0qdfgJEabeNXpWFv",
+      "_blank",
+      "noopener,noreferrer"
+    );
+  };
+
+  // FIX H6: single source of truth for menuOpen — pass only onToggle to Navbar,
+  // remove the conflicting onClick on the Toggle which caused double-toggle.
   return (
-    <Router>
-      <Navbar expand="md" className={scrolled ? "scrolled" : ""}>
-        <Container>
-          <Navbar.Brand href="#home">
-           
-              <img src={logo} alt="Logo"/>
-            
-            
-          </Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav">
-            <span className="navbar-toggler-icon"></span>
-          </Navbar.Toggle>
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="ms-auto">
-              <Nav.Link href="#home" className={activeLink === 'home' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('home')}>Home</Nav.Link>
-              <Nav.Link href="#skills" className={activeLink === 'skills' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('skills')}>Skills</Nav.Link>
-              <Nav.Link href="#project" className={activeLink === 'projects' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('projects')}>Projects</Nav.Link>
-              <Nav.Link href="#about" className={activeLink === 'about' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('about')}>About</Nav.Link>
-            </Nav>
-            <span className="navbar-text">
-              <div className="social-icon">
-                <a href="https://www.linkedin.com/in/wilson-antony-ra/" target="_blank"><img src={navIcon1} alt="" /></a>
-                <a href="https://github.com/Wilsonraja01" target="_blank"><img src={navIcon2} alt="" /></a>
-                <a href="https://www.instagram.com/wilsonraja.r.a_official/" target="_blank"><img src={navIcon3} alt="" /></a>
-                <a href="mailto: wilsonraja.ra@gmail.com" target="_blank"><img src={navIcon4} alt="" /></a>
-              </div>
-              <HashLink >
-                <Button  className="vvd" type="submit" onClick={downloadFile} ><span>My Resume</span></Button>
-              </HashLink>
-            </span>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
-    </Router>
-  )
-}
+    <Navbar
+      expand="md"
+      expanded={menuOpen}
+      className={scrolled ? "scrolled" : ""}
+      onToggle={(val) => setMenuOpen(val)}
+    >
+      <Container>
+        {/* FIX L2: descriptive alt text on logo */}
+        <Navbar.Brand href="#home">
+          <img src={logo} alt="Wilson Antony logo" />
+        </Navbar.Brand>
+
+        {/* FIX H6: no onClick here — Navbar.onToggle handles state */}
+        <Navbar.Toggle aria-controls="basic-navbar-nav">
+          <span className={`hamburger-line ${menuOpen ? 'open' : ''}`} />
+          <span className={`hamburger-line ${menuOpen ? 'open' : ''}`} />
+          <span className={`hamburger-line ${menuOpen ? 'open' : ''}`} />
+        </Navbar.Toggle>
+
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="ms-auto">
+            {NAV_LINKS.map(({ id, label, href }) => (
+              <Nav.Link
+                key={id}
+                href={href}
+                className={activeLink === id ? 'active navbar-link' : 'navbar-link'}
+                onClick={(e) => onUpdateActiveLink(e, id)}
+              >
+                {label}
+                {activeLink === id && <span className="nav-active-dot" />}
+              </Nav.Link>
+            ))}
+          </Nav>
+
+          <span className="navbar-text">
+            <div className="social-icon">
+              <a href="https://www.linkedin.com/in/wilson-antony-ra/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                <img src={navIcon1} alt="LinkedIn" />
+              </a>
+              <a href="https://github.com/Wilsonraja01" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                <img src={navIcon2} alt="GitHub" />
+              </a>
+              <a href="https://www.instagram.com/wilsonraja.r.a_official/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                <img src={navIcon3} alt="Instagram" />
+              </a>
+              <a href="mailto:wilsonraja.ra@gmail.com" aria-label="Email">
+                <img src={navIcon4} alt="Email" />
+              </a>
+            </div>
+            <button className="resume-btn" onClick={downloadFile}>
+              My Resume
+            </button>
+          </span>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
+  );
+};
