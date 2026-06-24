@@ -66,7 +66,7 @@ export const NavBar = () => {
 
   const downloadFile = () => {
     window.open(
-      "https://drive.google.com/uc?export=download&id=1grCMqjVrpEE3k2ny0qdfgJEabeNXpWFv",
+      "https://drive.google.com/uc?export=download&id=1fsTx5rDIKDcDPzlX4hhc8DvnJvWIikJL",
       "_blank",
       "noopener,noreferrer"
     );
