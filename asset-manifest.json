@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/personal-portfolio/static/css/main.5065566a.css",
-    "main.js": "/personal-portfolio/static/js/main.9da40936.js",
+    "main.js": "/personal-portfolio/static/js/main.06e5f1e7.js",
     "static/js/787.fb771931.chunk.js": "/personal-portfolio/static/js/787.fb771931.chunk.js",
     "static/media/color-sharp.png": "/personal-portfolio/static/media/color-sharp.bea361cfef80fefc2d1e.png",
     "static/media/hudini_iptv_ipad.png": "/personal-portfolio/static/media/hudini_iptv_ipad.e5427a1b0558cdd849d6.png",
@@ -11,6 +11,7 @@
     "static/media/portfolio_mockup.png": "/personal-portfolio/static/media/portfolio_mockup.adfd37fb3ed66a304017.png",
     "static/media/depression_ml.png": "/personal-portfolio/static/media/depression_ml.eacd1a80f389a03bbab6.png",
     "static/media/hudini_staff_connect.png": "/personal-portfolio/static/media/hudini_staff_connect.ed2eb190ec998e40a8e6.png",
+    "static/media/vector_shift.png": "/personal-portfolio/static/media/vector_shift.bd5a94564cedb7cb0626.png",
     "static/media/banner-bg.jpg": "/personal-portfolio/static/media/banner-bg.ccc52374dbc400cd3f69.jpg",
     "static/media/paraphrase_ai.png": "/personal-portfolio/static/media/paraphrase_ai.efdce0857518edcda715.png",
     "static/media/CentraNo2-Bold.ttf": "/personal-portfolio/static/media/CentraNo2-Bold.2faff7f7d3fc92a2fcd9.ttf",
@@ -24,11 +25,11 @@
     "static/media/nav-icon4.svg": "/personal-portfolio/static/media/nav-icon4.d449e8b99924621a975b1d8a3af67186.svg",
     "static/media/nav-icon1.svg": "/personal-portfolio/static/media/nav-icon1.721d5414c26365f117e71d46b6641cb2.svg",
     "main.5065566a.css.map": "/personal-portfolio/static/css/main.5065566a.css.map",
-    "main.9da40936.js.map": "/personal-portfolio/static/js/main.9da40936.js.map",
+    "main.06e5f1e7.js.map": "/personal-portfolio/static/js/main.06e5f1e7.js.map",
     "787.fb771931.chunk.js.map": "/personal-portfolio/static/js/787.fb771931.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.5065566a.css",
-    "static/js/main.9da40936.js"
+    "static/js/main.06e5f1e7.js"
   ]
 }
