@@ -8,6 +8,7 @@ import hudiniStaffImg    from "../assets/img/hudini_staff_connect.png";
 import portfolioImg      from "../assets/img/portfolio_mockup.png";
 import paraphraseAiImg   from "../assets/img/paraphrase_ai.png";
 import colorSharp2       from "../assets/img/color-sharp2.png";
+import vectorShiftImg    from "../assets/img/vector_shift.png";
 import 'animate.css';
 import TrackVisibility from 'react-on-screen';
 
@@ -67,6 +68,15 @@ const PROJECTS = [
     demo: "",
     projectlink: "",
   },
+  {
+    id: "vector-shift",
+    title: "Vector Shift Pipeline Builder",
+    description: "Fully-featured visual node-based workflow editor built with a React frontend and a FastAPI backend. Features custom standard nodes and DAG evaluation.",
+    imgUrl: vectorShiftImg,
+    finished: true,
+    demo: "https://vector-shift-sage.vercel.app/",
+    projectlink: "https://github.com/Wilsonraja01/VectorShift",
+  },
 ];
 
 export const Projects = () => {
@@ -117,17 +127,8 @@ export const Projects = () => {
                   <h2>Projects</h2>
                   <p>Here are some of my works to showcase my skills.</p>
 
-                  {/* FIX H2: Desktop grid — wrap ProjectCards in a proper Bootstrap Row+Col */}
-                  <Row className="projects-grid d-none d-md-flex">
-                    {PROJECTS.map((project) => (
-                      <Col key={project.id} md={4} className="mb-4 d-flex align-items-stretch">
-                        <ProjectCard {...project} />
-                      </Col>
-                    ))}
-                  </Row>
-
-                  {/* Mobile: native horizontal swipe strip */}
-                  <div ref={projectsTrackRef} className="projects-scroll-container d-flex d-md-none" role="list">
+                  {/* Carousel scroll strip for all devices */}
+                  <div ref={projectsTrackRef} className="projects-scroll-container d-flex" role="list">
                     {[...PROJECTS, ...PROJECTS, ...PROJECTS].map((project, index) => (
                       <div className="project-scroll-card" key={`${project.id}-copy-${index}`} role="listitem">
                         <ProjectCard {...project} />
